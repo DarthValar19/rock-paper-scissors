@@ -1,58 +1,58 @@
-function game(){
-    let playerWins = 0;
-    let computerWins = 0;
-    for(let i = 0; i < 5; i++){
-        let playerSelection = prompt("Pick and write rock, paper or scissors ").toLowerCase();
-        let computerSelection = randomChoose();
-        if (computerSelection === playerSelection){
-            console.log("Tie");
+
+function game(playerSelection){
+    let text = document.querySelector("#messages");
+    let playerWins = document.querySelector("#player");
+    let computerWins = document.querySelector("#computer");
+    let playerScore = Number(playerWins.textContent);
+    let computerScore = Number(computerWins.textContent);
+    playerSelection = playerSelection.toLowerCase();
+    let computerSelection = randomChoose();
+    if (computerSelection === playerSelection && (playerScore < 5 && computerScore < 5)){
+        text.textContent = "Tie";
+    }
+    else if (playerScore < 5 && computerScore < 5){
+        switch(playerSelection){
+            case "rock":
+                if (computerSelection === "scissors"){
+                    text.textContent = "You win!";
+                    playerScore++;
+                    break;
+                }
+                text.textContent = "You lose!";
+                computerScore++;
+                break;
+            case "paper":
+                if (computerSelection === "rock"){
+                    text.textContent = "You win!";
+                    playerScore++;
+                    break;
+                }
+                text.textContent = "You lose!";
+                computerScore++;
+                break;
+            case "scissors":
+                if (computerSelection === "paper"){
+                    text.textContent = "You win!";
+                    playerScore++;
+                    break;
+                }
+                text.textContent = "You lose!";
+                computerScore++;
+                break;
         }
-        else{
-            switch(playerSelection){
-                case "rock":
-                    if (computerSelection === "scissors"){
-                        console.log("You win!");
-                        playerWins++;
-                        break;
-                    }
-                    console.log("You lose!");
-                    computerWins++;
-                    break;
-                case "paper":
-                    if (computerSelection === "rock"){
-                        console.log("You win!");
-                        playerWins++;
-                        break;
-                    }
-                    console.log("You lose!");
-                    computerWins++;
-                    break;
-                case "scissors":
-                    if (computerSelection === "paper"){
-                        console.log("You win!");
-                        playerWins++;
-                        break;
-                    }
-                    console.log("You lose!");
-                    computerWins++;
-                    break;
-    
-            }
-        }
-        console.log("Computer: " + computerWins + " Player: " + playerWins);
+        playerWins.textContent = playerScore.toString();
+        computerWins.textContent = computerScore.toString();            
         
     }
-    if (computerWins > playerWins){
-        console.log("Computer Wins!");
+    
+    if (computerScore == 5){
+        text.textContent = "Computer Wins!";
     }
-    else if (playerWins > computerWins){
-        console.log("Player Wins!");
+    else if(playerScore == 5){
+        text.textContent = "Player Wins!";
     }
-    else{
-        console.log("It´s a tie!");
     }
-}
-
+    
 function randomChoose(){
     let randomNumber = Math.floor(Math.random() * 3);
     if (randomNumber == 0){
@@ -66,4 +66,18 @@ function randomChoose(){
     }
 }
 
-game();
+function main(){
+    let buttons = document.querySelectorAll("button");
+    buttons.forEach(function(button){
+    button.addEventListener("click", function(){
+        game(button.textContent);
+    })
+})
+}
+
+main();
+
+
+
+
+
