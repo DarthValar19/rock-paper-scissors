@@ -4,10 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="index.js"></script>
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <header>
+        <h1>
+            Rock, paper, scissors
+        </h1>
+        <p>
+            The first to reach a score of five, wins!
+        </p>
+    </header>
+    <article>
+        <div class = "buttons">
+            <button class = "rock">Rock</button>
+            <button class = "paper">Paper</button>
+            <button class = "scissors">Scissors</button>
+        </div>
+        <div class = "scores">
+            <div class = "scores-player">
+                <h2>
+                    Player
+                </h2>
+                <div id = "player">
+                    0
+                </div>
+            </div>
+            <div class = "scores-computer">
+                <h2>
+                    Computer
+                </h2>
+                <div id = "computer">
+                    0
+                </div>
+            </div>
+        </div>
+        <div class = "messages-container">
+            <p id = "messages">x</p>
+        </div>
+    </article>
+    <script src="index.js"></script>
 </body>
 </html>
